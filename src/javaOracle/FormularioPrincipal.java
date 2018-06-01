@@ -102,7 +102,7 @@ public class FormularioPrincipal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		JButton bGestionJugadores = new JButton("Gesiton de Jugadores");
+		JButton bGestionJugadores = new JButton("Gestion de Jugadores");
 		bGestionJugadores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GestionJugadores gj = new GestionJugadores(ficheroBBDD);
@@ -125,24 +125,24 @@ public class FormularioPrincipal extends JFrame {
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(96, Short.MAX_VALUE)
-					.addComponent(bGestionJugadores, GroupLayout.PREFERRED_SIZE, 256, GroupLayout.PREFERRED_SIZE)
-					.addGap(87))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-					.addGap(106)
+					.addContainerGap()
 					.addComponent(btnPrueba)
-					.addContainerGap(216, Short.MAX_VALUE))
+					.addContainerGap(344, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(99, Short.MAX_VALUE)
+					.addComponent(bGestionJugadores, GroupLayout.PREFERRED_SIZE, 256, GroupLayout.PREFERRED_SIZE)
+					.addGap(86))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(bGestionJugadores)
-					.addPreferredGap(ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+					.addGap(58)
 					.addComponent(btnPrueba)
-					.addGap(24))
+					.addContainerGap(150, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
