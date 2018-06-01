@@ -123,26 +123,37 @@ public class FormularioPrincipal extends JFrame {
 				frame.setVisible(false);
 			}
 		});
+		
+		JButton btnGoleadores = new JButton("Goleadores");
+		btnGoleadores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FormularioGoleadores FG =new FormularioGoleadores(ficheroBBDD);
+				FG.setVisible(true);
+				FG.setFrameActual(frame);
+				frame.setVisible(false);
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnPrueba)
-					.addContainerGap(344, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(99, Short.MAX_VALUE)
-					.addComponent(bGestionJugadores, GroupLayout.PREFERRED_SIZE, 256, GroupLayout.PREFERRED_SIZE)
-					.addGap(86))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(btnGoleadores, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnPrueba, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(bGestionJugadores, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE))
+					.addContainerGap(173, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(bGestionJugadores)
-					.addGap(58)
+					.addGap(18)
 					.addComponent(btnPrueba)
-					.addContainerGap(150, Short.MAX_VALUE))
+					.addGap(18)
+					.addComponent(btnGoleadores)
+					.addContainerGap(147, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}

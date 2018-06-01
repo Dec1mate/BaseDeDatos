@@ -19,7 +19,14 @@ public class SqlTools {
 		}
 		return sb.append(")}").toString();
 	}
-	
+	public static String ConstruirLlamadaProcedimiento(String procedureName, int cantidadParametros){
+		StringBuffer sb = new StringBuffer("{call "+procedureName+"(");
+		for(int i=1;i<=cantidadParametros;i++){
+			sb.append("?");
+			if(i<cantidadParametros) sb.append(",");
+		}
+		return sb.append(")}").toString();
+	}
 	
 	// El siguiente metodo cierra los recursos abiertos (ResultSet ,Statement ,OracleCallableStatement, Connection)
 	public static void close(ResultSet rs, Statement s,OracleCallableStatement os, Connection c){
