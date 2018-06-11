@@ -196,7 +196,7 @@ public class FormularioJugador extends JFrame {
 				// Abri ventana de dialog
 				int opcion = fch.showOpenDialog(null);
 
-				// Si hacemos click
+				// Si hacemos 
 				if (opcion == JFileChooser.APPROVE_OPTION) {
 					try {
 						// Obtenenemos el nombre del fichero seleccionado

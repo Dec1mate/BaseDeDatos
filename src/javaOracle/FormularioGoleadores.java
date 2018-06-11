@@ -98,28 +98,30 @@ public class FormularioGoleadores extends JFrame {
 		        	
 		        	con = (new ConexionOracle(f)).Conectar();
 		        	
-		        	cs = con.prepareCall(SqlTools.ConstruirLlamadaProcedimiento("MOSTRARGOLEADORES", 4));
+		        	cs = con.prepareCall(SqlTools.ConstruirLlamadaProcedimiento("MOSTRARGOLEADOR", 4));
 		        	
 		        	int pos=0;
+		        	cs.registerOutParameter(++pos, OracleTypes.CURSOR);
 		        	cs.setString(++pos, equipo);
 		        	cs.setString(++pos, anyo);
 		        	cs.setString(++pos, jugador);
-		        	cs.registerOutParameter(++pos, OracleTypes.CURSOR);
+
+		        	
 		        	
 		        	cs.execute();
 		        	
-		        	rs = (ResultSet) cs.getObject(2);   // Nuestro cursor, convertido en ResultSet
+		        	rs = (ResultSet) cs.getObject(1);   // Nuestro cursor, convertido en ResultSet
 		        	
-		        	String Titulos[]={" DORSAL "," PUESTO "," NOMBRE "," MUNDIALES JUGADOS "};
+		        	String Titulos[]={" NOMBRE "," PUESTO "," EQUIPO "," GOLES "};
 		            String fila[]=new String[4];
 		            
 		            DefaultTableModel modelo = new DefaultTableModel(null, Titulos);
 		            
-		            while (rs.next()) {        
-		                fila[0] = rs.getString("N1");
+		            while (rs.next()) {	            	
+		                fila[0] = rs.getString("C1");
 		                fila[1] = rs.getString("C2");
 		                fila[2] = rs.getString("C3");
-		                fila[3] = rs.getString("C4");
+		                fila[3] = rs.getString("N1");
 		                modelo.addRow(fila);
 		            }
 
@@ -158,9 +160,11 @@ public class FormularioGoleadores extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				DefaultTableModel tm = (DefaultTableModel) table.getModel();
 				
-				String jugador = String.valueOf(tm.getValueAt(table.getSelectedRow(),2));
+				String jugador = String.valueOf(tm.getValueAt(table.getSelectedRow(),0));
+				
+				String anyo = comboBox_1.getSelectedItem().toString();
 				frameActual.setVisible(false);
-				FormularioJugador fj=new FormularioJugador(jugador,f);
+				GolesJugador fj=new GolesJugador(jugador,anyo ,f);
 				fj.setVisible(true);
 				fj.setFrameAnterior(frameActual);
 							
